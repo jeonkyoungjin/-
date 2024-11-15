@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MECCATOWN</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            height: 300vh;
+            justify-content: flex-start;
+        }
+        .centered-text {
+            margin-top: 40vh;
+            text-align: center;
+            font-size: 50px;
+        }
+        .link-container {
+            display: flex;
+            justify-content: space-between;
+            width: 600px;
+            margin-top: 100px;
+            font-size: 18px;
+        }
+        .link {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .search-container {
+            position: absolute;
+            top: 50vh;
+            display: flex;
+            justify-content: center;
+        }
+        .search-input {
+            width: 500px;
+            padding: 10px;
+            font-size: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background-color: #555;
+        }
+        .result-container {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .form-container {
+            display: none; /* 폼이 처음에 보이지 않도록 */
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-text">MECCATOWN</div>
+    <div class="link-container">
+        <span class="link" onclick="toggleForm('signup')">회원가입</span>
+        <span class="link" onclick="toggleForm('login')">로그인</span>
+    </div>
+    <div class="search-container">
+        <input type="text" id="location-input" class="search-input" placeholder="위치를 입력하세요">
+        <button class="search-button" onclick="getLocationInfo()">검색</button>
+    </div>
+    <div class="result-container" id="result"></div>
+
+    <!-- 회원가입 폼 -->
+    <div class="form-container" id="signup-form">
+        <h3>회원가입</h3>
+        <input type="text" class="form-input" placeholder="이름">
+        <input type="email" class="form-input" placeholder="이메일">
+        <input type="password" class="form-input" placeholder="비밀번호">
+        <button class="form-button" onclick="submitSignup()">가입하기</button>
+    </div>
+
+    <!-- 로그인 폼 -->
+    <div class="form-container" id="login-form">
+        <h3>로그인</h3>
+        <input type="text" class="form-input" placeholder="아이디">
+        <input type="password" class="form-input" placeholder="비밀번호">
+        <button class="form-button" onclick="submitLogin()">로그인</button>
+    </div>
+
+    <script>
+        // 폼을 토글로 표시하는 함수
+        function toggleForm(formType) {
+            const signupForm = document.getElementById('signup-form');
+            const loginForm = document.getElementById('login-form');
+
+            if (formType === 'signup') {
+                signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+                loginForm.style.display = 'none';  // 로그인 폼 숨기기
+            } else if (formType === 'login') {
+                loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+                signupForm.style.display = 'none';  // 회원가입 폼 숨기기
+            }
+        }
+
+        // 회원가입 제출 함수 (예시)
+        function submitSignup() {
+            alert("회원가입 완료!");
+            document.getElementById('signup-form').style.display = 'none';
+        }
+
+        // 로그인 제출 함수 (예시)
+        function submitLogin() {
+            alert("로그인 완료!");
+            document.getElementById('login-form').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
